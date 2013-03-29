@@ -34,10 +34,10 @@ if(!isset($_POST['submit'])){
 	$clubs = $club_data->{'clubs'}[0];
 	if (count($clubs) == 0) {
 		echo "<h2>No clubs found with the given name. Please try again.</h2>";
-		?><br/><a href="/st/">Back</a><?php
+		?><br/><a href="/">Back</a><?php
 	} else if (count($clubs) > 1) {
 		echo "<h2>Multiple clubs found. Please try again.</h2>";
-		?><br/><a href="/st/">Back</a><?php
+		?><br/><a href="/">Back</a><?php
 	} else {
 
 		$club_name = $club_data->{'clubs'}[0]->{'name'};
