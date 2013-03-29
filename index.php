@@ -66,7 +66,7 @@ if(!isset($_POST['submit'])){
 			$rides_url = $v1_base_url.'/rides?athleteId='.$member_id;
 			$rides = json_decode(file_get_contents($rides_url))->{'rides'};
 			#prevent server timeout
-			if ($time - time() > 27) {
+			if ($time - time() > 20) {
 				$time = time();
 				echo '<h2>This page was requested using ' . $_SERVER['REQUEST_METHOD'] . '</h2>';
 				echo '<pre>';
