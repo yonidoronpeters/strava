@@ -22,7 +22,6 @@ if(!isset($_POST['submit'])){
 	$v2_base_url = 'http://www.strava.com/api/v2';
 	$this_month = date("Y-m");
 	$date_regex = "/".$this_month.".*/";
-	$time = time();
 
 	#get id and name for club
 	$club_string = str_replace(' ', '%20', strtolower($_POST["club"]));
@@ -65,19 +64,7 @@ if(!isset($_POST['submit'])){
 
 			$rides_url = $v1_base_url.'/rides?athleteId='.$member_id;
 			$rides = json_decode(file_get_contents($rides_url))->{'rides'};
-			#prevent server timeout
-			if ($time - time() > 20) {
-				$time = time();
-				echo '<h2>This page was requested using ' . $_SERVER['REQUEST_METHOD'] . '</h2>';
-				echo '<pre>';
-				print_r($_POST);
-				echo '</pre>';
-				?>
-				<form action="" method="post">
-    				<input type="submit" value="Request this page using POST" />
-				</form>
-				<?php
-			}
+			
 			#iterate over rides to collect data
 			foreach ($rides as $ride) {
 				$ride_id = $ride->{'id'};
