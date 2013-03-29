@@ -68,7 +68,7 @@ if(!isset($_POST['submit'])){
 			#prevent server timeout
 			if ($time - time() > 27) {
 				$time = time();
-				echo "";
+				json_decode(file_get_contents($club_url));
 			}
 			#iterate over rides to collect data
 			foreach ($rides as $ride) {
