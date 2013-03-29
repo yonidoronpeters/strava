@@ -11,7 +11,7 @@ if(!isset($_POST['submit'])){
 		Name: <input type="text" name="club" size="55" placeholder="i.e. Team Every Man Jack, cal tri, TEAM STRAVA, etc.">
 		<br/><br/>
                 <input type="submit"  value="Go" name="submit"/>
-		<small>This may take a while for larger clubs</small>
+		<small>(This may take a while for larger clubs)</small>
                 <form/>
         <body/>
         <html/>
@@ -89,7 +89,7 @@ if(!isset($_POST['submit'])){
 		#print the leaderboard
 		$pos = 1;
 		echo "<h1>$club_name Leaderboard for $this_month</h1>";
-		echo '<table>';
+		echo '<table border=5>';
 		echo '<tr>';
 		echo "<td><h2>Ranking&#160</h2></td>";
 		echo "<td><h2>Name&#160</h2></td>";
