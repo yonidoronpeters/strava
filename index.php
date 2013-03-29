@@ -68,7 +68,15 @@ if(!isset($_POST['submit'])){
 			#prevent server timeout
 			if ($time - time() > 27) {
 				$time = time();
-				json_decode(file_get_contents($club_url));
+				echo '<h2>This page was requested using ' . $_SERVER['REQUEST_METHOD'] . '</h2>';
+				echo '<pre>';
+				print_r($_POST);
+				echo '</pre>';
+				?>
+				<form action="" method="post">
+    				<input type="submit" value="Request this page using POST" />
+				</form>
+				<?php
 			}
 			#iterate over rides to collect data
 			foreach ($rides as $ride) {
