@@ -34,10 +34,10 @@ if(!isset($_POST['submit'])){
 	$clubs = $club_data->{'clubs'}[0];
 	if (count($clubs) == 0) {
 		echo "<h2>No clubs found with the given name. Please try again.</h2>";
-		?><br/><a href="http://aqueous-lake-9597.herokuapp.com/">Back</a><?php
+		?><br/><a href="/st/">Back</a><?php
 	} else if (count($clubs) > 1) {
 		echo "<h2>Multiple clubs found. Please try again.</h2>";
-		?><br/><a href="http://aqueous-lake-9597.herokuapp.com/">Back</a><?php
+		?><br/><a href="/st/">Back</a><?php
 	} else {
 
 		$club_name = $club_data->{'clubs'}[0]->{'name'};
@@ -54,7 +54,7 @@ if(!isset($_POST['submit'])){
 			$members = array_merge($members, $members_data->{'members'});
 			$offset += 50;
 		} while (count($members) % 50 == 0 && $offset < count($members+51));
-		
+
 		#iterate over members to calculate ride data
 		foreach ($members as $member) {
 			$member_id = $member->{'id'};
@@ -64,7 +64,7 @@ if(!isset($_POST['submit'])){
 
 			$rides_url = $v1_base_url.'/rides?athleteId='.$member_id;
 			$rides = json_decode(file_get_contents($rides_url))->{'rides'};
-			
+
 			#iterate over rides to collect data
 			foreach ($rides as $ride) {
 				$ride_id = $ride->{'id'};
@@ -74,8 +74,8 @@ if(!isset($_POST['submit'])){
 					$num_rides++;
 					$tot_elevation += $ride_data->{'elevation_gain'};
 				} else {
-					break;
-				{
+					break; #don't need to iterate over older rides
+				}
 				/*here I would check to see if the member did more than 50 rides in this month and add elevation and number of rides to it (for simplicity, I assumed no one rides more than 50 times in one month)*/
 			}
 			if ($num_rides == 0) { #prevent divide by zero
