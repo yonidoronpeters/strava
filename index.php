@@ -73,7 +73,9 @@ if(!isset($_POST['submit'])){
 				if (preg_match($date_regex, $ride_data->{'start_date_local'})) {
 					$num_rides++;
 					$tot_elevation += $ride_data->{'elevation_gain'};
-				}
+				} else {
+					break;
+				{
 				/*here I would check to see if the member did more than 50 rides in this month and add elevation and number of rides to it (for simplicity, I assumed no one rides more than 50 times in one month)*/
 			}
 			if ($num_rides == 0) { #prevent divide by zero
